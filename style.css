@@ -1,0 +1,37 @@
+body {
+    font-family: "Segou UI", sans-serif;
+    background-color: #d0f0ff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    margin-top: 20px;
+    color:#333;
+}
+.game-panel {
+    margin: 20px;
+}
+.game-field {
+    position: relative;
+    margin: 0 auto;
+    width: 90 vw;
+    height: 60 vh;
+    border: 3px dashed #888;
+    background-color: #fefbe9;
+    overflow: hidden;
+}
+.butterfly {
+    position: absolute;
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.butterfly:hover {
+    transform: scale(1.2) rotate(5deg);
+}
+.score {
+font-size: 1.2rem;
+margin-bottom: 10px;
+}

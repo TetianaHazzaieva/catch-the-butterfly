@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Catch the butterfly</title>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <h1>Catch a butterfly</h1>
+        <div class="game-panel">
+            <label for="difficulty">Difficulty:</label>
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+            <button id="start-btn">Start the game</button>
+        </div>
+        <div class="score">Points: <span id="score">0</span></div>
+        <div class="game-field" id="game-field"></div>
+        <script src="script.js"></script>
+    </body>
+</html>
