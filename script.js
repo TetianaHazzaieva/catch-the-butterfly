@@ -1,9 +1,9 @@
 const butterflies = [
-  "./img/butterfly-blue.png",
-  "./img/butterfly-colorful.png",
-  "./img/butterfly-multicolored.png",
-  "./img/butterfly-red.png",
-  "./img/butterfly-yellow.png"
+  "img/butterfly-blue.png",
+  "img/butterfly-colorful.png",
+  "img/butterfly-multicolored.png",
+  "img/butterfly-red.png",
+  "img/butterfly-yellow.png"
 ];
 const gameField = document.getElementById("game-field");
 const scoreEl = document.getElementById("score");
@@ -15,6 +15,11 @@ let gameInterval;
 let butterflySpeed = 3000;
 
 startBtn.addEventListener("click", startGame);
+
+function updateScore(val = score) {
+  score = val;
+  scoreEl.textContent = score;
+}
 
 function startGame() {
   clearInterval(gameInterval);
@@ -42,10 +47,5 @@ function spawnButterfly(lifeTime) {
   gameField.appendChild(img);
   
   setTimeout(() => lifeTime * 0.9);
-}
-
-function updateScore(val = score) {
-  score = val;
-  scoreEl.textContent = score;
 }
 }
