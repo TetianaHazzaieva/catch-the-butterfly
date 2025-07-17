@@ -28,8 +28,9 @@ function startGame() {
   updateScore();
 
 const speed = 
+difficultySelect.value === 'easy' ? 3000 :
 difficultySelect.value === 'medium' ? 2000 :
-difficultySelect.value === 'hard' ? 1000 : 3000;
+difficultySelect.value === 'hard' ? 1000 :
 
 gameInterval = setInterval(() => spawnButterfly(speed), speed);
 }
