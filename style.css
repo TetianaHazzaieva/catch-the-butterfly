@@ -19,7 +19,7 @@ h1 {
   width: 90vw;
   height: 60vh;
   border: 3px dashed #888;
-  background: linear-gradient(to bottom, #0057b7 0%, #0057b7 50%, #ffd700 50%, ffd700 100%);
+  background: linear-gradient(to bottom, #0057b7 0%, #0057b7 50%, #ffd700 50%, #ffd700 100%);
   overflow: hidden;
   border-radius: 10px;
 }
