@@ -3,7 +3,7 @@ const butterflies = [
   "img/butterfly-colorful.png",
   "img/butterfly-multicolored.png",
   "img/butterfly-red.png",
-  "img/butterfly-yellow.png"
+  "img/butterfly-yellow.png",
 ];
 const gameField = document.getElementById("game-field");
 const scoreEl = document.getElementById("score");
@@ -27,12 +27,16 @@ function startGame() {
   score = 0;
   updateScore();
 
-const speed = 
-difficultySelect.value === 'easy' ? 3000 :
-difficultySelect.value === 'medium' ? 2000 :
-difficultySelect.value === 'hard' ? 1000 :
+  const speed =
+    difficultySelect.value === "easy"
+      ? 3000
+      : difficultySelect.value === "medium"
+      ? 2000
+      : difficultySelect.value === "hard"
+      ? 1000
+      : 3000;
 
-gameInterval = setInterval(() => spawnButterfly(speed), speed);
+  gameInterval = setInterval(() => spawnButterfly(speed), speed);
 }
 
 function spawnButterfly(lifeTime) {
@@ -41,12 +45,19 @@ function spawnButterfly(lifeTime) {
   img.className = "butterfly";
 
   const rect = gameField.getBoundingClientRect();
-  img.style.left = `${Math.random() * (rect.Width - 60)}px`;
-  img.style.top = `${Math.random() * (rect.Height - 60)}px`;
+  img.style.left = `${Math.random() * (rect.width - 60)}px`;
+  img.style.top = `${Math.random() * (rect.height - 60)}px`;
 
-  img.onklick = () => { img.remove(), updateScore(score + 1);
+  img.onclick = () => {
+    img.remove();
+    updateScore(score + 1);
+  };
+
   gameField.appendChild(img);
-  
-  setTimeout(() => lifeTime * 0.9);
-}
+
+  setTimeout(() => {
+    if (gameField.contains(img)) {
+      img.remove();
+    }
+  }, lifeTime * 0.9);
 }
