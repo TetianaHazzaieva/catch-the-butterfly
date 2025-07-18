@@ -7,12 +7,14 @@ const butterflies = [
 ];
 const gameField = document.getElementById("game-field");
 const scoreEl = document.getElementById("score");
+const timerEl = document.getElementById("timer");
 const startBtn = document.getElementById("start-btn");
 const difficultySelect = document.getElementById("difficulty");
 
 let score = 0;
+let countdown = 20;
 let gameInterval;
-let butterflySpeed = 3000;
+let timerInterval;
 
 startBtn.addEventListener("click", startGame);
 
@@ -21,11 +23,21 @@ function updateScore(val = score) {
   scoreEl.textContent = score;
 }
 
+function updateTimer(val) {
+  timerEl.textContent = val;
+}
+
 function startGame() {
   clearInterval(gameInterval);
+  clearInterval(timerInterval);
   gameField.innerHTML = "";
   score = 0;
   updateScore();
+
+  countdown = 20;
+  updateTimer(countdown);
+
+  startBtn.disabled = true;
 
   const speed =
     difficultySelect.value === "easy"
@@ -37,8 +49,23 @@ function startGame() {
       : 3000;
 
   gameInterval = setInterval(() => spawnButterfly(speed), speed);
+  timerInterval = setInterval(() => {
+    countdown--;
+    updateTimer(countdown);
+
+    if (countdown <= 0) {
+      endGame();
+    }
+  }, 1000);
 }
 
+function endGame() {
+  clearInterval(gameInterval);
+  clearInterval(timerInterval);
+  startBtn.disabled = false;
+  gameField.innerHTML = "";
+  alert(`Time's up! You scored ${score} points.`);
+}
 function spawnButterfly(lifeTime) {
   const img = document.createElement("img");
   img.src = butterflies[Math.floor(Math.random() * butterflies.length)];
